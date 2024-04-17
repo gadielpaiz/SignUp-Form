@@ -16,6 +16,7 @@
 		B047116C2BD04B9000269921 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B047116B2BD04B9000269921 /* AppDelegate.swift */; };
 		B04711722BD05D5000269921 /* AnalitycsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04711712BD05D5000269921 /* AnalitycsService.swift */; };
 		B04711742BD05D6500269921 /* CrashlitycsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04711732BD05D6500269921 /* CrashlitycsService.swift */; };
+		B04711772BD06E6000269921 /* Validations.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04711762BD06E6000269921 /* Validations.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,7 @@
 		B047116F2BD04E7D00269921 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B04711712BD05D5000269921 /* AnalitycsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalitycsService.swift; sourceTree = "<group>"; };
 		B04711732BD05D6500269921 /* CrashlitycsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrashlitycsService.swift; sourceTree = "<group>"; };
+		B04711762BD06E6000269921 /* Validations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validations.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +70,7 @@
 				B047115E2BD042C000269921 /* View */,
 				B04711612BD04A3E00269921 /* Firebase */,
 				B04711702BD05D1600269921 /* Service */,
+				B04711752BD06E3E00269921 /* Utilies */,
 				B04711542BD040E100269921 /* Assets.xcassets */,
 				B04711562BD040E100269921 /* Preview Content */,
 			);
@@ -122,6 +125,14 @@
 				B04711732BD05D6500269921 /* CrashlitycsService.swift */,
 			);
 			path = Service;
+			sourceTree = "<group>";
+		};
+		B04711752BD06E3E00269921 /* Utilies */ = {
+			isa = PBXGroup;
+			children = (
+				B04711762BD06E6000269921 /* Validations.swift */,
+			);
+			path = Utilies;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -228,6 +239,7 @@
 				B04711602BD042DD00269921 /* SignUpView.swift in Sources */,
 				B04711722BD05D5000269921 /* AnalitycsService.swift in Sources */,
 				B04711512BD040DF00269921 /* signupformApp.swift in Sources */,
+				B04711772BD06E6000269921 /* Validations.swift in Sources */,
 				B04711742BD05D6500269921 /* CrashlitycsService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
