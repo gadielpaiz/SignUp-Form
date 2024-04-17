@@ -35,6 +35,9 @@ struct SignUpView: View {
             }
             Spacer()
         }
+        .onAppear {
+            AnalitycsService.currentScreenView("Sign Up")
+        }
     }
 }
 
