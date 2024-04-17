@@ -47,12 +47,12 @@ final class Validations: Error {
     }
     
     func isValidEmail(_ email: String)throws -> Bool {
-        let emailRegex = "^[A-Za-z]+(?:[\\'\\,\\.\\-][A-Za-z]+)*\\s[A-Za-z]+(?:[\\'\\,\\.\\-][A-Za-z]+)*$"
+        let emailRegex = "[A-Z0-9a-z._%+-]+@[A-Z0-9a-z.-]+\\.[A-Za-z]{2,}"
         return try validate(email, with: emailRegex, emptyError: .emailIsRequiere, invalidError: .emailIsNotValid)
     }
     
     func isValidPassword(_ password: String)throws -> Bool {
-        let passwordRegex = "^[A-Za-z]+(?:[\\'\\,\\.\\-][A-Za-z]+)*\\s[A-Za-z]+(?:[\\'\\,\\.\\-][A-Za-z]+)*$"
+        let passwordRegex = "^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d!@#$%^&*(),.?\":{}|<>]{8,}$"
         return try validate(password, with: passwordRegex, emptyError: .passwordIsRequiere, invalidError: .passwordPolicies)
     }
 }
