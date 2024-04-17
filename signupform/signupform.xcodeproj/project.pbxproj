@@ -18,6 +18,7 @@
 		B04711742BD05D6500269921 /* CrashlitycsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04711732BD05D6500269921 /* CrashlitycsService.swift */; };
 		B04711772BD06E6000269921 /* Validations.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04711762BD06E6000269921 /* Validations.swift */; };
 		B047117A2BD0754C00269921 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04711792BD0754C00269921 /* SignUpViewModel.swift */; };
+		B0EEE1C82BD08FA900F44473 /* Backgroud.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0EEE1C72BD08FA900F44473 /* Backgroud.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +34,7 @@
 		B04711732BD05D6500269921 /* CrashlitycsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrashlitycsService.swift; sourceTree = "<group>"; };
 		B04711762BD06E6000269921 /* Validations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validations.swift; sourceTree = "<group>"; };
 		B04711792BD0754C00269921 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
+		B0EEE1C72BD08FA900F44473 /* Backgroud.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Backgroud.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +94,7 @@
 			isa = PBXGroup;
 			children = (
 				B047115F2BD042DD00269921 /* SignUpView.swift */,
+				B0EEE1C72BD08FA900F44473 /* Backgroud.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -250,6 +253,7 @@
 				B04711602BD042DD00269921 /* SignUpView.swift in Sources */,
 				B04711722BD05D5000269921 /* AnalitycsService.swift in Sources */,
 				B04711512BD040DF00269921 /* signupformApp.swift in Sources */,
+				B0EEE1C82BD08FA900F44473 /* Backgroud.swift in Sources */,
 				B04711772BD06E6000269921 /* Validations.swift in Sources */,
 				B04711742BD05D6500269921 /* CrashlitycsService.swift in Sources */,
 				B047117A2BD0754C00269921 /* SignUpViewModel.swift in Sources */,
