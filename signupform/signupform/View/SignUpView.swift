@@ -12,7 +12,7 @@ struct SignUpView: View {
     
     var body: some View {
         ZStack {
-            BackgroudView(firstColor: .blue, secondColor: .purple, thirdColor: .orange, startPoint: .topLeading, endPoint: .bottomTrailing)
+            BackgroudView(firstColor: .red, secondColor: .blue, thirdColor: .green, startPoint: .topLeading, endPoint: .bottomTrailing)
             
             VStack {
                 Spacer()
@@ -25,68 +25,60 @@ struct SignUpView: View {
                     Spacer()
                     
                     VStack {
-                        TextField("Full name", text: $signUpViewModel.fullName )
-                            .textFieldStyle(GradientBorderStyle(color1: .gray, color2: .black))
-                            .offset(y: 8)
+                        
+                        ValidatingField(
+                            "Full name",
+                            text: $signUpViewModel.fullName,
+                            gradientColor: (.gray, .black),
+                            needsSecurity: false
+                        )
+                        
+                        ValidatingMessage(
+                            message: signUpViewModel.validationMessage["fullname"] ,
+                            isError: false,
+                            validationText: false
+                        )
+                        
+                        ValidatingField(
+                            "Email",
+                            text: $signUpViewModel.email,
+                            gradientColor: (.black, .black),
+                            needsSecurity: false
+                        )
+                        
+                        ValidatingMessage(
+                            message: signUpViewModel.validationMessage["email"] ,
+                            isError: false,
+                            validationText: false
+                        )
+                        
+                        ValidatingField(
+                            "Password",
+                            text: $signUpViewModel.password,
+                            gradientColor: (.black, .gray),
+                            needsSecurity: true
+                        )
+                        
+                        ValidatingMessage(
+                            message: signUpViewModel.validationMessage["password"] ,
+                            isError: false,
+                            validationText: false
+                        )
+                        
+                        ValidatingButton(
+                            action: signUpViewModel.submitValidation,
+                            color: .blue,
+                            maxWidth: 100,
+                            maxHeight: 50
+                        )
+                 
+                        
+                        ValidatingMessage(
+                            message: signUpViewModel.validationMessage["Validation"] ,
+                            isError: true,
+                            validationText: true
+                        )
                             
-                        
-                        if let fullNameMessage = signUpViewModel.validationMessage["fullname"] {
-                            Text(fullNameMessage)
-                                .foregroundStyle(.red)
-                                .offset(y: 8)
-                                .padding(.top, 10)
-                        } else {
-                            Text("")
-                                .padding(.vertical, 10)
-                        }
-                        
-                        TextField("Email", text: $signUpViewModel.email )
-                            .textFieldStyle(GradientBorderStyle(color1: .black, color2: .black))
-                            .keyboardType(.emailAddress)
-                            .offset(y: 8)
-                            
-                        
-                        if let emailMessage = signUpViewModel.validationMessage["email"] {
-                            Text(emailMessage)
-                                .foregroundStyle(.red)
-                                .offset(y: 8)
-                                .padding(.top, 10)
-                        }  else {
-                            Text("")
-                                .padding(.vertical, 10)
-                        }
-                        
-                        SecureField("Password", text: $signUpViewModel.password )
-                            .textFieldStyle(GradientBorderStyle(color1: .black, color2: .gray))
-                            .offset(y: 8)
-                        
-                        if let passwordMessage = signUpViewModel.validationMessage["password"] {
-                            Text(passwordMessage)
-                                .foregroundStyle(.red)
-                                .offset(y: 8)
-                                .padding(.top, 10)
-                        }  else {
-                            Text("")
-                                .padding(.vertical, 10)
-                        }
-                        
-                        
-                        Button("Submit") {
-                            signUpViewModel.submitValidation()
-                        }
-                        .buttonStyle(GradientButtonStyle(color: .blue, maxWidth: 100, maxHeight: 50))
-                        .padding(.vertical, 12)
-                        
-                        if let validMessage = signUpViewModel.validationMessage["Validation"] {
-                            Text(validMessage)
-                                .foregroundStyle(.green)
-                                .font(.headline)
-                                .offset(y: 8)
-                                .padding(.top, 1)
-                        }  else {
-                            Text("")
-                                .padding(.top, 1)
-                        }
                         
                     }
                     .multilineTextAlignment(.center)
