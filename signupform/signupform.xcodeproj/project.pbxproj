@@ -14,6 +14,8 @@
 		B04711642BD04ACC00269921 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = B04711632BD04ACC00269921 /* FirebaseAnalytics */; };
 		B04711662BD04ACC00269921 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = B04711652BD04ACC00269921 /* FirebaseCrashlytics */; };
 		B047116C2BD04B9000269921 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B047116B2BD04B9000269921 /* AppDelegate.swift */; };
+		B04711722BD05D5000269921 /* AnalitycsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04711712BD05D5000269921 /* AnalitycsService.swift */; };
+		B04711742BD05D6500269921 /* CrashlitycsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04711732BD05D6500269921 /* CrashlitycsService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +27,8 @@
 		B047116B2BD04B9000269921 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B047116E2BD04DE300269921 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B047116F2BD04E7D00269921 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		B04711712BD05D5000269921 /* AnalitycsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalitycsService.swift; sourceTree = "<group>"; };
+		B04711732BD05D6500269921 /* CrashlitycsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrashlitycsService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +67,7 @@
 				B047116B2BD04B9000269921 /* AppDelegate.swift */,
 				B047115E2BD042C000269921 /* View */,
 				B04711612BD04A3E00269921 /* Firebase */,
+				B04711702BD05D1600269921 /* Service */,
 				B04711542BD040E100269921 /* Assets.xcassets */,
 				B04711562BD040E100269921 /* Preview Content */,
 			);
@@ -108,6 +113,15 @@
 				B047116F2BD04E7D00269921 /* GoogleService-Info.plist */,
 			);
 			path = Release;
+			sourceTree = "<group>";
+		};
+		B04711702BD05D1600269921 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				B04711712BD05D5000269921 /* AnalitycsService.swift */,
+				B04711732BD05D6500269921 /* CrashlitycsService.swift */,
+			);
+			path = Service;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -212,7 +226,9 @@
 			files = (
 				B047116C2BD04B9000269921 /* AppDelegate.swift in Sources */,
 				B04711602BD042DD00269921 /* SignUpView.swift in Sources */,
+				B04711722BD05D5000269921 /* AnalitycsService.swift in Sources */,
 				B04711512BD040DF00269921 /* signupformApp.swift in Sources */,
+				B04711742BD05D6500269921 /* CrashlitycsService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
