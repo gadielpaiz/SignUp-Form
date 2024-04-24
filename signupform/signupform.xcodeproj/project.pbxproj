@@ -11,6 +11,9 @@
 		B04711552BD040E100269921 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B04711542BD040E100269921 /* Assets.xcassets */; };
 		B04711582BD040E100269921 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B04711572BD040E100269921 /* Preview Assets.xcassets */; };
 		B04711602BD042DD00269921 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B047115F2BD042DD00269921 /* SignUpView.swift */; };
+		B04711642BD04ACC00269921 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = B04711632BD04ACC00269921 /* FirebaseAnalytics */; };
+		B04711662BD04ACC00269921 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = B04711652BD04ACC00269921 /* FirebaseCrashlytics */; };
+		B047116C2BD04B9000269921 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B047116B2BD04B9000269921 /* AppDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +22,9 @@
 		B04711542BD040E100269921 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B04711572BD040E100269921 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		B047115F2BD042DD00269921 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
+		B047116B2BD04B9000269921 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		B047116E2BD04DE300269921 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		B047116F2BD04E7D00269921 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -26,6 +32,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B04711642BD04ACC00269921 /* FirebaseAnalytics in Frameworks */,
+				B04711662BD04ACC00269921 /* FirebaseCrashlytics in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -52,7 +60,9 @@
 			isa = PBXGroup;
 			children = (
 				B04711502BD040DF00269921 /* signupformApp.swift */,
+				B047116B2BD04B9000269921 /* AppDelegate.swift */,
 				B047115E2BD042C000269921 /* View */,
+				B04711612BD04A3E00269921 /* Firebase */,
 				B04711542BD040E100269921 /* Assets.xcassets */,
 				B04711562BD040E100269921 /* Preview Content */,
 			);
@@ -75,6 +85,31 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		B04711612BD04A3E00269921 /* Firebase */ = {
+			isa = PBXGroup;
+			children = (
+				B04711672BD04AE100269921 /* Debug */,
+				B04711682BD04AEB00269921 /* Release */,
+			);
+			path = Firebase;
+			sourceTree = "<group>";
+		};
+		B04711672BD04AE100269921 /* Debug */ = {
+			isa = PBXGroup;
+			children = (
+				B047116E2BD04DE300269921 /* GoogleService-Info.plist */,
+			);
+			path = Debug;
+			sourceTree = "<group>";
+		};
+		B04711682BD04AEB00269921 /* Release */ = {
+			isa = PBXGroup;
+			children = (
+				B047116F2BD04E7D00269921 /* GoogleService-Info.plist */,
+			);
+			path = Release;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -82,6 +117,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B047115B2BD040E100269921 /* Build configuration list for PBXNativeTarget "signupform" */;
 			buildPhases = (
+				B047116D2BD04C6200269921 /* Firebase Configuratiton */,
 				B04711492BD040DF00269921 /* Sources */,
 				B047114A2BD040DF00269921 /* Frameworks */,
 				B047114B2BD040DF00269921 /* Resources */,
@@ -91,6 +127,10 @@
 			dependencies = (
 			);
 			name = signupform;
+			packageProductDependencies = (
+				B04711632BD04ACC00269921 /* FirebaseAnalytics */,
+				B04711652BD04ACC00269921 /* FirebaseCrashlytics */,
+			);
 			productName = signupform;
 			productReference = B047114D2BD040DF00269921 /* signupform.app */;
 			productType = "com.apple.product-type.application";
@@ -119,6 +159,9 @@
 				Base,
 			);
 			mainGroup = B04711442BD040DF00269921;
+			packageReferences = (
+				B04711622BD04ACC00269921 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			productRefGroup = B047114E2BD040DF00269921 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -140,11 +183,34 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		B047116D2BD04C6200269921 /* Firebase Configuratiton */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Firebase Configuratiton";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "INFO_PLIST=GoogleService-Info.plist\nDEVELOPMENT_INFO_PLIST=${PROJECT_DIR}/${TARGET_NAME}/Firebase/Debug/${INFO_PLIST}\nRELEASE_INFO_PLIST=${PROJECT_DIR}/${TARGET_NAME}/Firebase/Release/${INFO_PLIST}\n\necho \"Verifying ${INFO_PLIST} in ${DEVELOPMENT_INFO_PLIST}\"\nif [ ! -f $DEVELOPMENT_INFO_PLIST ] ; then\n    echo \"Development GoogleService-Info.plist not found.\"\n    exit 1\nfi\n\necho \"Verifying ${INFO_PLIST} in ${RELEASE_INFO_PLIST}\"\nif [ ! -f $RELEASE_INFO_PLIST ] ; then\n    echo \"Release GoogleService-Info.plist not found.\"\n    exit 1\nfi\n\nPLIST_DESTINATION=${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.app\necho \"Copying ${INFO_PLIST} to final destination: ${PLIST_DESTINATION}\"\n\nif [ \"${CONFIGURATION}\" == \"Release\" ] ; then\n    echo \"Copied ${RELEASE_INFO_PLIST}.\"\n    cp \"${RELEASE_INFO_PLIST}\" \"${PLIST_DESTINATION}\"\nelse\n    echo \"Copied ${DEVELOPMENT_INFO_PLIST}.\"\n    cp \"${DEVELOPMENT_INFO_PLIST}\" \"${PLIST_DESTINATION}\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		B04711492BD040DF00269921 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B047116C2BD04B9000269921 /* AppDelegate.swift in Sources */,
 				B04711602BD042DD00269921 /* SignUpView.swift in Sources */,
 				B04711512BD040DF00269921 /* signupformApp.swift in Sources */,
 			);
@@ -277,11 +343,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"signupform/Preview Content\"";
-				DEVELOPMENT_TEAM = ZQLDW5Q4FJ;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = ZQLDW5Q4FJ;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -295,6 +364,8 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.gadielpaiz.signupform;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "SignUp-Form-Dev";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -306,11 +377,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"signupform/Preview Content\"";
-				DEVELOPMENT_TEAM = ZQLDW5Q4FJ;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = ZQLDW5Q4FJ;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -324,6 +398,8 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.gadielpaiz.signupform;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "SignUp-Form-Prod";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -352,6 +428,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		B04711622BD04ACC00269921 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.24.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		B04711632BD04ACC00269921 /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B04711622BD04ACC00269921 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		B04711652BD04ACC00269921 /* FirebaseCrashlytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B04711622BD04ACC00269921 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCrashlytics;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = B04711452BD040DF00269921 /* Project object */;
 }
