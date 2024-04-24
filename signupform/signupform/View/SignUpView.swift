@@ -10,10 +10,9 @@ import SwiftUI
 struct SignUpView: View {
     @StateObject private var signUpViewModel = SignUpViewModel()
     
-    
     var body: some View {
         ZStack {
-            Backgroud(colorLeading: .blue, colorTrailing: .red, startPoint: .bottomLeading, endPoint: .topTrailing)
+            BackgroudView(firstColor: .blue, secondColor: .purple, thirdColor: .orange, startPoint: .topLeading, endPoint: .bottomTrailing)
             
             VStack {
                 Spacer()
@@ -27,8 +26,9 @@ struct SignUpView: View {
                     
                     VStack {
                         TextField("Full name", text: $signUpViewModel.fullName )
+                            .textFieldStyle(GradientBorderStyle(color1: .gray, color2: .black))
                             .offset(y: 8)
-                            .padding(.vertical, 10)
+                            
                         
                         if let fullNameMessage = signUpViewModel.validationMessage["fullname"] {
                             Text(fullNameMessage)
@@ -41,9 +41,10 @@ struct SignUpView: View {
                         }
                         
                         TextField("Email", text: $signUpViewModel.email )
+                            .textFieldStyle(GradientBorderStyle(color1: .black, color2: .black))
                             .keyboardType(.emailAddress)
                             .offset(y: 8)
-                            .padding(.vertical, 10)
+                            
                         
                         if let emailMessage = signUpViewModel.validationMessage["email"] {
                             Text(emailMessage)
@@ -56,8 +57,8 @@ struct SignUpView: View {
                         }
                         
                         SecureField("Password", text: $signUpViewModel.password )
+                            .textFieldStyle(GradientBorderStyle(color1: .black, color2: .gray))
                             .offset(y: 8)
-                            .padding(.vertical, 10)
                         
                         if let passwordMessage = signUpViewModel.validationMessage["password"] {
                             Text(passwordMessage)
@@ -73,7 +74,7 @@ struct SignUpView: View {
                         Button("Submit") {
                             signUpViewModel.submitValidation()
                         }
-                        .buttonStyle(BorderedButtonStyle())
+                        .buttonStyle(GradientButtonStyle(color: .blue, maxWidth: 100, maxHeight: 50))
                         .padding(.vertical, 12)
                         
                         if let validMessage = signUpViewModel.validationMessage["Validation"] {
