@@ -16,7 +16,7 @@ final class SignUpViewModel: ObservableObject {
     @Published var validationMessage: [String : String] = [:]
     private var validation = Validations()
     
-    private func submitValidation() {
+     func submitValidation() {
         validationMessage = [:]
         
         do {
@@ -44,7 +44,7 @@ final class SignUpViewModel: ObservableObject {
         } catch validationError.passwordIsRequiere {
             validationMessage["password"] = "Password is requiere."
         } catch validationError.passwordPolicies {
-            validationMessage["password"] = "Password does not meet policies."
+            validationMessage["password"] = "Password needs at least 8 characters"
         } catch {
             validationMessage["password"] = "An unexpected error occurred"
         }
