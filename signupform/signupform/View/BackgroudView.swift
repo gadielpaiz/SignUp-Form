@@ -15,7 +15,7 @@ struct BackgroudView: View {
     let endPoint: UnitPoint
     
     var body: some View {
-        LinearGradient(gradient: Gradient(colors: [firstColor.opacity(0.6), secondColor.opacity(0.6), thirdColor.opacity(0.6)]), startPoint: startPoint, endPoint: endPoint)
+        LinearGradient(gradient: Gradient(colors: [firstColor.opacity(0.8), secondColor.opacity(0.8), thirdColor.opacity(0.8)]), startPoint: startPoint, endPoint: endPoint)
             .ignoresSafeArea(.all)
     }
 }
