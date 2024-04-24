@@ -1,0 +1,58 @@
+//
+//  Validations.swift
+//  signupform
+//
+//  Created by Gadiel Paiz on 4/17/24.
+//
+
+import Foundation
+import FirebaseAnalytics
+
+enum validationsError: Error {
+    case fullnameIsNotValid, fullnameIsRequiere
+    case emailIsNotValid, emailIsRequiere
+    case passwordPolicies, passwordIsRequiere
+}
+
+final class Validations: Error {
+    // Combine all regex checks into a single method to reduce redundancy
+    private func matches(_ string: String, regex: String) -> Bool {
+        let predicate = NSPredicate(format: "SELF MATCHES %@", regex)
+        return predicate.evaluate(with: string)
+    }
+    // Generalized validation method to handle empty string validation and regex matching
+    private func validate(_ value: String, with regex: String, emptyError: validationsError, invalidError: validationsError)throws -> Bool {
+        guard !value.isEmpty else {
+            AnalitycsService.logEvent(
+                "Validations",
+                parameters: [AnalyticsParameterValue : emptyError]
+            )
+            throw emptyError
+        }
+        
+        guard matches(value, regex: regex) else {
+            AnalitycsService.logEvent(
+                "Validations",
+                parameters: [AnalyticsParameterValue : invalidError]
+            )
+            throw invalidError
+        }
+        
+        return true
+    }
+    
+    func isValidFullName(_ fullName: String)throws -> Bool {
+        let nameRegex = "^[A-Za-z]+(?:[\\'\\,\\.\\-][A-Za-z]+)*\\s[A-Za-z]+(?:[\\'\\,\\.\\-][A-Za-z]+)*$"
+        return try validate(fullName, with: nameRegex, emptyError: .fullnameIsRequiere, invalidError: .fullnameIsNotValid)
+    }
+    
+    func isValidEmail(_ email: String)throws -> Bool {
+        let emailRegex = "^[A-Za-z]+(?:[\\'\\,\\.\\-][A-Za-z]+)*\\s[A-Za-z]+(?:[\\'\\,\\.\\-][A-Za-z]+)*$"
+        return try validate(email, with: emailRegex, emptyError: .emailIsRequiere, invalidError: .emailIsNotValid)
+    }
+    
+    func isValidPassword(_ password: String)throws -> Bool {
+        let passwordRegex = "^[A-Za-z]+(?:[\\'\\,\\.\\-][A-Za-z]+)*\\s[A-Za-z]+(?:[\\'\\,\\.\\-][A-Za-z]+)*$"
+        return try validate(password, with: passwordRegex, emptyError: .passwordIsRequiere, invalidError: .passwordPolicies)
+    }
+}
