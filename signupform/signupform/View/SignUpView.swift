@@ -35,7 +35,7 @@ struct SignUpView: View {
                         
                         ValidatingMessage(
                             message: signUpViewModel.validationMessage["fullname"] ,
-                            isError: false,
+                            isError: true,
                             validationText: false
                         )
                         
@@ -48,7 +48,7 @@ struct SignUpView: View {
                         
                         ValidatingMessage(
                             message: signUpViewModel.validationMessage["email"] ,
-                            isError: false,
+                            isError: true,
                             validationText: false
                         )
                         
@@ -61,11 +61,12 @@ struct SignUpView: View {
                         
                         ValidatingMessage(
                             message: signUpViewModel.validationMessage["password"] ,
-                            isError: false,
+                            isError: true,
                             validationText: false
                         )
                         
                         ValidatingButton(
+                            buttonName: "Submit",
                             action: signUpViewModel.submitValidation,
                             color: .blue,
                             maxWidth: 100,
@@ -75,7 +76,7 @@ struct SignUpView: View {
                         
                         ValidatingMessage(
                             message: signUpViewModel.validationMessage["Validation"] ,
-                            isError: true,
+                            isError: false,
                             validationText: true
                         )
                             

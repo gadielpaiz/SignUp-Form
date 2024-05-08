@@ -21,7 +21,7 @@ struct ValidatingMessage: View {
     var body: some View {
         if let message = message {
             Text(message)
-                .foregroundStyle(isError ? .green : .red)
+                .foregroundStyle(isError ? .red : .green)
                 .font(validationText ? .headline : .callout)
                 .offset(y: 8)
                 .padding(.vertical, 10)
@@ -35,5 +35,5 @@ struct ValidatingMessage: View {
 }
 
 #Preview {
-    ValidatingMessage(message: "Test text", isError: false, validationText: false)
+    ValidatingMessage(message: "Test text", isError: false, validationText: true)
 }
