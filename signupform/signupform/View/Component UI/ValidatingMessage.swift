@@ -8,21 +8,21 @@
 import SwiftUI
 
 struct ValidatingMessage: View {
-    private var message: String?
+    private let message: String?
     private var isError: Bool
-    private var validationText: Bool
+    private var isValidationText: Bool
     
     init(message: String? = nil, isError: Bool, validationText: Bool) {
         self.message = message
         self.isError = isError
-        self.validationText = validationText
+        self.isValidationText = validationText
     }
     
     var body: some View {
         if let message = message {
             Text(message)
                 .foregroundStyle(isError ? .green : .red)
-                .font(validationText ? .headline : .callout)
+                .font(isValidationText ? .headline : .callout)
                 .offset(y: 8)
                 .padding(.vertical, 10)
         } else {

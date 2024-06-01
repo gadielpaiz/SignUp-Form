@@ -13,12 +13,13 @@ struct SignUpView: View {
     
     var body: some View {
         ZStack {
-            BackgroudView(firstColor: .blue, secondColor: .green, thirdColor: .red, startPoint: .topLeading, endPoint: .bottomTrailing)
+            BackgroudSignView()
             
             VStack {
                 Spacer()
                 
                 Text("Sign Up")
+                    .foregroundStyle(.blue)
                     .font(.system(.title, design: .rounded, weight: .semibold))
                     .padding(.bottom, 10)
                 
@@ -31,8 +32,9 @@ struct SignUpView: View {
                             "Full name",
                             text: $signUpViewModel.fullName,
                             gradientColor: (.gray, .black),
+                            fontColor: .blue,
                             needsSecurity: false,
-                            maxWidth: 370,
+                            maxWidth: 350,
                             maxHeight: 40
                         )
                         
@@ -46,10 +48,12 @@ struct SignUpView: View {
                             "Email",
                             text: $signUpViewModel.email,
                             gradientColor: (.black, .black),
+                            fontColor: .blue,
                             needsSecurity: false,
-                            maxWidth: 370,
+                            maxWidth: 350,
                             maxHeight: 40
                         )
+                        
                         
                         ValidatingMessage(
                             message: signUpViewModel.validationMessage["email"] ,
@@ -62,8 +66,9 @@ struct SignUpView: View {
                                 "Password",
                                 text: $signUpViewModel.password,
                                 gradientColor: (.black, .gray),
+                                fontColor: .blue,
                                 needsSecurity: isSecure,
-                                maxWidth: 370,
+                                maxWidth: 350,
                                 maxHeight: 40
                             )
                             
@@ -87,10 +92,11 @@ struct SignUpView: View {
                         )
                         
                         ValidatingButton(
-                            action: signUpViewModel.submitValidation,
-                            color: .blue,
-                            maxWidth: 100,
-                            maxHeight: 50
+                            signUpViewModel.submitValidation,
+                            colorButton: .blue,
+                            colorFont: .white,
+                            maxWidth: 110,
+                            maxHeight: 60
                         )
                         
                         
