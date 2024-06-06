@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct BackgroundHomeView: View {
+struct BackgroundHome: View {
     private var iphoneScaleFirst: CGFloat
     private var iphoneScaleSecond: CGFloat
     
@@ -46,12 +46,12 @@ struct BackgroundHomeView: View {
                     RoundedRectangle(cornerRadius: 24)
                         .scale(0.79)
                         .foregroundStyle(.white)
-                }
+                }                
             }
         }
     }
 }
 
 #Preview {
-    BackgroundHomeView(iphoneScaleFirst: 0.98, iphoneScaleSecond: 0.9)
+    BackgroundHome(iphoneScaleFirst: 0.98, iphoneScaleSecond: 0.9)
 }

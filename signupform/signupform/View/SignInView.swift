@@ -8,92 +8,116 @@
 import SwiftUI
 
 struct SignInView: View {
+    @Environment(\.dismiss) private var dismiss
     @StateObject private var signUpViewModel = SignUpViewModel()
     @State private var isSecure = true
+    private let constants = Constants.shared
     
     var body: some View {
-        ZStack {
-            BackgroudSignView()
-            
-            VStack {
+        GeometryReader { geometry in
+            VStack(spacing: 0) {
+                
                 Spacer()
                 
-                Text("Sign In")
-                    .foregroundStyle(.blue)
-                    .font(.system(.title, design: .rounded, weight: .semibold))
-                    .padding(.bottom, 10)
-                
-                HStack {
-                    Spacer()
+                VStack(spacing: 0) {
+                    CloseButton()
                     
-                    VStack {
-                        ValidatingField(
-                            "Email",
-                            text: $signUpViewModel.email,
-                            gradientColor: (.gray, .black),
-                            fontColor: .blue,
-                            needsSecurity: false,
-                            maxWidth: 340,
-                            maxHeight: 40
-                        )                        
-                        
-                        ValidatingMessage(
-                            message: signUpViewModel.validationMessage["email"],
-                            isError: false,
-                            validationText: false
+                    VStack(spacing: Constants.paddingBetweenSections) {
+                        TitleAndSubtitle(
+                            title: "Sign In",
+                            subtitle: "We happy to see you again.",
+                            maxWidth: constants.scrnPercForTitle(geometry)
                         )
+                        .padding(.top, 45)
                         
-                        ZStack {
-                            ValidatingField(
-                                "Password",
-                                text: $signUpViewModel.password,
-                                gradientColor: (.black, .gray),
-                                fontColor: .blue,
-                                needsSecurity: isSecure,
-                                maxWidth: 340,
-                                maxHeight: 40
-                            )
-                            
-                            Button(action: { isSecure.toggle() }) {
-                                if !signUpViewModel.password.isEmpty {
-                                    Image(systemName: isSecure ? "eye.fill" : "eye.slash.fill")
-                                        .resizable()
-                                        .frame(maxWidth: isSecure ? 30 : 32, maxHeight: isSecure ? 20 : 23)
-                                }  else {
-                                    Image(systemName: "")
+                        ScrollView(.vertical) {
+                            VStack(spacing: Constants.paddingBetweenSections) {
+                                VStack(spacing: 14) {
+                                    ValidatingField(
+                                        "Enter your email",
+                                        text: $signUpViewModel.email,
+                                        gradientColor: (.black, .black),
+                                        needsSecurity: false,
+                                        maxWidth: geometry.size.width,
+                                        maxHeight: 60
+                                    )
+                                    
+                                    ValidatingMessage(
+                                        signUpViewModel.validationMessage["email"]
+                                    )
+                                    
+                                    ZStack {
+                                        ValidatingField(
+                                            "Enter your password",
+                                            text: $signUpViewModel.password,
+                                            gradientColor: (.black, .black),
+                                            needsSecurity: isSecure,
+                                            maxWidth: geometry.size.width,
+                                            maxHeight: 60
+                                        )
+                                        
+                                        Button(action: { isSecure.toggle() }) {
+                                            if !signUpViewModel.password.isEmpty {
+                                                Image(systemName: isSecure ? "eye.fill" : "eye.slash.fill")
+                                                    .resizable()
+                                                    .frame(maxWidth: isSecure ? 30 : 32, maxHeight: isSecure ? 20 : 23)
+                                            } else {
+                                                Image(systemName: "")
+                                            }
+                                        }
+                                        .padding(.top)
+                                        .padding(.leading, 290)
+                                    }
+                                    
+                                    ValidatingMessage(
+                                        signUpViewModel.validationMessage["password"]
+                                    )
+                                    
+                                    HStack(spacing: 0) {
+                                        Button("Remember me") {
+                                            
+                                        }
+                                        Spacer()
+                                        
+                                        Button("Forgot Password") {
+                                            
+                                        }
+                                        .buttonStyle(TextButtonStyle())
+                                    }
+                                    
+                                    ValidatingButton(
+                                        signUpViewModel.submitValidation,
+                                        colorButton: .blue,
+                                        maxWidth: geometry.size.width,
+                                        maxHeight: 100,
+                                        buttonName: "Access"
+                                    )
+                                    .padding(.top, 5)
+                                    
+                                    HaveAccount(haveAccount: false,tapButton: {})
+                                        .padding(.top, 10)
                                 }
                             }
-                            .padding(.top)
-                            .padding(.leading, 300)
                         }
-                        
-                        ValidatingMessage(
-                            message: signUpViewModel.validationMessage["password"],
-                            isError: false,
-                            validationText: false
-                        )
-                        
-                        ValidatingButton(
-                            signUpViewModel.submitValidation,
-                            colorButton: .blue,
-                            colorFont: .white,
-                            maxWidth: 110,
-                            maxHeight: 60
-                        )
-                        
-                        ValidatingMessage(
-                            message: signUpViewModel.validationMessage["Validation"],
-                            isError: true,
-                            validationText: true
-                        )
+                        .padding(.horizontal, Constants.mainHorizontalPadding)
                     }
-                    Spacer()
                 }
-                Spacer()
+                .frame(
+                    width: geometry.size.width,
+                    height: constants.scrnPercForSheet(geometry),
+                    alignment: .center
+                )
+                .background( BackgroudSign() )
+                .clipShape(RoundedRectangle(cornerRadius: Constants.sheetCornerRadius))
             }
-            .onAppear {
-                AnalitycsService.currentScreenView("Sign In")
-            }
+        }
+        .presentationBackground(.clear)
+        .ignoresSafeArea()
+        .onAppear {
+            AnalitycsService.specialScreenView("Sign In")
+        }
+        .onDisappear {
+            dismiss()
         }
     }
 }
