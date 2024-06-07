@@ -8,7 +8,7 @@
 import Foundation
 import FirebaseCrashlytics
 
-final class CrashlitycsService {
+final class CrashlyticsService {
     static func logError(_ error: Error) {
         Crashlytics.crashlytics().record(error: error)
     }
