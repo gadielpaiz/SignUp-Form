@@ -10,15 +10,16 @@ import SwiftUI
 struct SignInView: View {
     @StateObject private var signUpViewModel = SignUpViewModel()
     @State private var isSecure = true
-  
+    
     var body: some View {
         ZStack {
-            BackgroudView(firstColor: .blue, secondColor: .purple, thirdColor: .orange, startPoint: .bottomLeading, endPoint: .topTrailing)
+            BackgroudSignView()
             
             VStack {
                 Spacer()
                 
                 Text("Sign In")
+                    .foregroundStyle(.blue)
                     .font(.system(.title, design: .rounded, weight: .semibold))
                     .padding(.bottom, 10)
                 
@@ -30,10 +31,11 @@ struct SignInView: View {
                             "Email",
                             text: $signUpViewModel.email,
                             gradientColor: (.gray, .black),
+                            fontColor: .blue,
                             needsSecurity: false,
-                            maxWidth: 370,
+                            maxWidth: 340,
                             maxHeight: 40
-                        )
+                        )                        
                         
                         ValidatingMessage(
                             message: signUpViewModel.validationMessage["email"],
@@ -46,8 +48,9 @@ struct SignInView: View {
                                 "Password",
                                 text: $signUpViewModel.password,
                                 gradientColor: (.black, .gray),
+                                fontColor: .blue,
                                 needsSecurity: isSecure,
-                                maxWidth: 370,
+                                maxWidth: 340,
                                 maxHeight: 40
                             )
                             
@@ -69,12 +72,13 @@ struct SignInView: View {
                             isError: false,
                             validationText: false
                         )
-
+                        
                         ValidatingButton(
-                            action: signUpViewModel.submitValidation,
-                            color: .blue,
+                            signUpViewModel.submitValidation,
+                            colorButton: .blue,
+                            colorFont: .white,
                             maxWidth: 110,
-                            maxHeight: 54
+                            maxHeight: 60
                         )
                         
                         ValidatingMessage(
