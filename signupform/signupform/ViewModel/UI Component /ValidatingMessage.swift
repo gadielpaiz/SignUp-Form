@@ -9,13 +9,13 @@ import SwiftUI
 
 struct ValidatingMessage: View {
     private let message: String?
-    private var isError: Bool
-    private var isValidationText: Bool
+    private var isError = false
+    private var isValidationText = false
     
-    init(message: String? = nil, isError: Bool, validationText: Bool) {
+    init(_ message: String?, isError: Bool = false, isValidationText: Bool = false) {
         self.message = message
         self.isError = isError
-        self.isValidationText = validationText
+        self.isValidationText = isValidationText
     }
     
     var body: some View {
@@ -35,5 +35,5 @@ struct ValidatingMessage: View {
 }
 
 #Preview {
-    ValidatingMessage(message: "Test text", isError: false, validationText: false)
+    ValidatingMessage("Test text", isError: false, isValidationText: false)
 }

@@ -7,8 +7,7 @@
 
 import SwiftUI
 
-struct BackgroudSignView: View {
-    
+struct BackgroudSign: View {    
     var body: some View {
         VStack {
             ZStack {
@@ -47,5 +46,5 @@ struct BackgroudSignView: View {
 }
 
 #Preview {
-    BackgroudSignView()
+    BackgroudSign()
 }

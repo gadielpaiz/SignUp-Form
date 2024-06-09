@@ -10,49 +10,48 @@ import SwiftUI
 struct LandingView: View {
     @State private var isItPressedToSignUp = false
     @State private var isItPressedToSignIn = false
+    private let constants = Constants.shared
     
     var body: some View {
-        ZStack {
-            BackgroundHomeView(iphoneScaleFirst: 0.98, iphoneScaleSecond: 0.9)
-            
-            GeometryReader { geometry in
+        GeometryReader { geometry in
+            VStack(spacing: 0) {
                 
-                VStack {
-                    Spacer()
-                    
-                    HStack(alignment: .bottom, spacing: 55) {
-                        Spacer()
-                        
-                        Button("Sign Up") {
-                            isItPressedToSignUp = true
-                        }
-                        .buttonStyle(GradientButtonStyle(color: .blue, maxWidth: geometry.size.width * 1 / 5, maxHeight: geometry.size.height * 1 / 10))
-                        .foregroundStyle(.white)
-                        .sheet(isPresented: $isItPressedToSignUp) {
-                            
-                        } content: {
-                            SignUpView()
-                        }
-                        
-                        
-                        Button("Sign In") {
-                            isItPressedToSignIn = true
-                        }
-                        .buttonStyle(GradientButtonStyle(color: .blue, maxWidth: geometry.size.width * 1 / 5, maxHeight: geometry.size.height * 1 / 10))
-                        .foregroundStyle(.white)
-                        .sheet(isPresented: $isItPressedToSignIn) {
-                            
-                        } content: {
-                            NavigationStack {
-                                SignInView()
-                            }
-                        }
-                        
-                        Spacer()
+                TitleAndSubtitle(
+                    title: "Landing View",
+                    subtitle: "Lading View sub",
+                    maxWidth: constants.scrnPercForTitle(geometry)
+                )
+                .padding(.top, 30)
+                
+                Spacer()
+                
+                HStack(spacing: 30) {
+                    Button("Sign Up") {
+                        isItPressedToSignUp = true
                     }
-                    .padding(.vertical, min(geometry.size.width, geometry.size.height) * 0.18)
+                    .sheet(isPresented: $isItPressedToSignUp,
+                           content: { SignUpView() }
+                    )
+                    
+                    Button("Sign In") {
+                        isItPressedToSignIn = true
+                    }
+                    .sheet(isPresented: $isItPressedToSignIn,
+                           content: { SignInView() }
+                    )
                 }
+                .buttonStyle(GradientButtonStyle(color: .blue, maxWidth: geometry.size.width, maxHeight: geometry.size.width * 0.1))
+                .padding(.horizontal, Constants.mainHorizontalPadding)
+                .padding(.bottom, 20)
+                
+                SocialMediaAccess()
+                    .padding(.horizontal, Constants.mainHorizontalPadding)
+                    .padding(.bottom, 37)
             }
+        }
+        .background(BackgroundHome(iphoneScaleFirst: 0.98, iphoneScaleSecond: 0.92))
+        .onAppear {
+            AnalitycsService.currentScreenView("Landing View")
         }
     }
 }
