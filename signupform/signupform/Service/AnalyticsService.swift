@@ -5,12 +5,12 @@
 //  Created by Gadiel Paiz on 4/17/24.
 //
 
-import Foundation
 import FirebaseAnalytics
 import FirebaseAuth
+import Foundation
 
-final class AnalitycsService {
-    static func logEvent(_ event: String, parameters: [String : Any]? = nil) {
+final class AnalyticsService {
+    static func logEvent(_ event: String, parameters: [String: Any]? = nil) {
         Analytics.logEvent(event, parameters: parameters)
     }
     

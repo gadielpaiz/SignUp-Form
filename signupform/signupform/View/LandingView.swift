@@ -51,7 +51,7 @@ struct LandingView: View {
         }
         .background(BackgroundHome(iphoneScaleFirst: 0.98, iphoneScaleSecond: 0.92))
         .onAppear {
-            AnalitycsService.currentScreenView("Landing View")
+            AnalyticsService.currentScreenView("Landing View")
         }
     }
 }
