@@ -1,24 +1,24 @@
 //
-//  SignUpView.swift
+//  SignInView.swift
 //  signupform
 //
-//  Created by Gadiel Paiz on 4/17/24.
+//  Created by Gadiel Paiz on 5/21/24.
 //
 
 import SwiftUI
 
-struct SignUpView: View {
+struct SignInView: View {
     @StateObject private var signUpViewModel = SignUpViewModel()
     @State private var isSecure = true
-    
+  
     var body: some View {
         ZStack {
-            BackgroudView(firstColor: .blue, secondColor: .green, thirdColor: .red, startPoint: .topLeading, endPoint: .bottomTrailing)
+            BackgroudView(firstColor: .blue, secondColor: .purple, thirdColor: .orange, startPoint: .bottomLeading, endPoint: .topTrailing)
             
             VStack {
                 Spacer()
                 
-                Text("Sign Up")
+                Text("Sign In")
                     .font(.system(.title, design: .rounded, weight: .semibold))
                     .padding(.bottom, 10)
                 
@@ -26,10 +26,9 @@ struct SignUpView: View {
                     Spacer()
                     
                     VStack {
-                        
                         ValidatingField(
-                            "Full name",
-                            text: $signUpViewModel.fullName,
+                            "Email",
+                            text: $signUpViewModel.email,
                             gradientColor: (.gray, .black),
                             needsSecurity: false,
                             maxWidth: 370,
@@ -37,22 +36,7 @@ struct SignUpView: View {
                         )
                         
                         ValidatingMessage(
-                            message: signUpViewModel.validationMessage["fullname"] ,
-                            isError: false,
-                            validationText: false
-                        )
-                        
-                        ValidatingField(
-                            "Email",
-                            text: $signUpViewModel.email,
-                            gradientColor: (.black, .black),
-                            needsSecurity: false,
-                            maxWidth: 370,
-                            maxHeight: 40
-                        )
-                        
-                        ValidatingMessage(
-                            message: signUpViewModel.validationMessage["email"] ,
+                            message: signUpViewModel.validationMessage["email"],
                             isError: false,
                             validationText: false
                         )
@@ -72,7 +56,7 @@ struct SignUpView: View {
                                     Image(systemName: isSecure ? "eye.fill" : "eye.slash.fill")
                                         .resizable()
                                         .frame(maxWidth: isSecure ? 30 : 32, maxHeight: isSecure ? 20 : 23)
-                                } else {
+                                }  else {
                                     Image(systemName: "")
                                 }
                             }
@@ -81,40 +65,35 @@ struct SignUpView: View {
                         }
                         
                         ValidatingMessage(
-                            message: signUpViewModel.validationMessage["password"] ,
+                            message: signUpViewModel.validationMessage["password"],
                             isError: false,
                             validationText: false
                         )
-                        
+
                         ValidatingButton(
                             action: signUpViewModel.submitValidation,
                             color: .blue,
-                            maxWidth: 100,
-                            maxHeight: 50
+                            maxWidth: 110,
+                            maxHeight: 54
                         )
                         
-                        
                         ValidatingMessage(
-                            message: signUpViewModel.validationMessage["Validation"] ,
+                            message: signUpViewModel.validationMessage["Validation"],
                             isError: true,
                             validationText: true
                         )
-                        
-                        
                     }
-                    
                     Spacer()
                 }
                 Spacer()
             }
             .onAppear {
-                AnalitycsService.currentScreenView("Sign Up")
+                AnalitycsService.currentScreenView("Sign In")
             }
         }
     }
 }
 
-
 #Preview {
-    SignUpView()
+    SignInView()
 }
