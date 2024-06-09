@@ -27,7 +27,7 @@ struct ValidatingField: View {
     var body: some View {
         if needsSecurity {
             SecureField(title, text: text)
-                .foregroundStyle(.blue)
+                .foregroundStyle(.white)
                 .textFieldStyle(
                     GradientBorderStyle(
                         color1: gradientColor.color1,
@@ -41,6 +41,7 @@ struct ValidatingField: View {
             
         } else {
             TextField(title, text: text)
+                .foregroundStyle(.white)
                 .textFieldStyle(
                     GradientBorderStyle(
                         color1: gradientColor.color1,
@@ -59,8 +60,8 @@ struct ValidatingField: View {
     ValidatingField(
         "Enter your password",
         text: .constant(""),
-        gradientColor: (.white, .black),
-        needsSecurity: true,
+        gradientColor: (.blue, .blue),
+        needsSecurity: false,
         maxWidth: 350,
         maxHeight: 50
     )

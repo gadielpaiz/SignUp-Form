@@ -8,10 +8,10 @@
 import SwiftUI
 
 struct SignInView: View {
+    @FocusState private var focusedField: SignInViewModel.Fields?
     @Environment(\.dismiss) private var dismiss
-    @StateObject private var signUpViewModel = SignUpViewModel()
-    @State private var isSecure = true
     private let constants = Constants.shared
+    @State private var isSecure = true
     
     var body: some View {
         GeometryReader { geometry in
@@ -35,58 +35,60 @@ struct SignInView: View {
                                 VStack(spacing: 14) {
                                     ValidatingField(
                                         "Enter your email",
-                                        text: $signUpViewModel.email,
-                                        gradientColor: (.black, .black),
+                                        text: .constant(""),
+                                        gradientColor: (.blue, .blue),
                                         needsSecurity: false,
                                         maxWidth: geometry.size.width,
                                         maxHeight: 60
                                     )
+                                    .focused($focusedField, equals: .email)
                                     
                                     ValidatingMessage(
-                                        signUpViewModel.validationMessage["email"]
+                                        ""
                                     )
                                     
                                     ZStack {
                                         ValidatingField(
                                             "Enter your password",
-                                            text: $signUpViewModel.password,
-                                            gradientColor: (.black, .black),
+                                            text: .constant(""),
+                                            gradientColor: (.blue, .blue),
                                             needsSecurity: isSecure,
                                             maxWidth: geometry.size.width,
                                             maxHeight: 60
                                         )
                                         
-                                        Button(action: { isSecure.toggle() }) {
-                                            if !signUpViewModel.password.isEmpty {
-                                                Image(systemName: isSecure ? "eye.fill" : "eye.slash.fill")
-                                                    .resizable()
-                                                    .frame(maxWidth: isSecure ? 30 : 32, maxHeight: isSecure ? 20 : 23)
-                                            } else {
-                                                Image(systemName: "")
-                                            }
-                                        }
-                                        .padding(.top)
-                                        .padding(.leading, 290)
+//                                        Button(action: { isSecure.toggle() }) {
+//                                            if !signUpViewModel.password.isEmpty {
+//                                                Image(systemName: isSecure ? "eye.fill" : "eye.slash.fill")
+//                                                    .resizable()
+//                                                    .frame(maxWidth: isSecure ? 30 : 32, maxHeight: isSecure ? 20 : 23)
+//                                            } else {
+//                                                Image(systemName: "")
+//                                            }
+//                                        }
+//                                        .padding(.top)
+//                                        .padding(.leading, 290)
+//                                    }
+//                                    
+//                                    ValidatingMessage(
+//                                        signUpViewModel.validationMessage["password"]
+//                                    )
+//                                    
+//                                    HStack(spacing: 0) {
+//                                        Button("Remember me") {
+//                                            
+//                                        }
+//                                        Spacer()
+//                                        
+//                                        Button("Forgot Password") {
+//                                            
+//                                        }
+//                                        .buttonStyle(TextButtonStyle())
                                     }
-                                    
-                                    ValidatingMessage(
-                                        signUpViewModel.validationMessage["password"]
-                                    )
-                                    
-                                    HStack(spacing: 0) {
-                                        Button("Remember me") {
-                                            
-                                        }
-                                        Spacer()
-                                        
-                                        Button("Forgot Password") {
-                                            
-                                        }
-                                        .buttonStyle(TextButtonStyle())
-                                    }
+                                    ValidatingMessage("")
                                     
                                     ValidatingButton(
-                                        signUpViewModel.submitValidation,
+                                        {},
                                         colorButton: .blue,
                                         maxWidth: geometry.size.width,
                                         maxHeight: 100,
@@ -114,7 +116,7 @@ struct SignInView: View {
         .presentationBackground(.clear)
         .ignoresSafeArea()
         .onAppear {
-            AnalitycsService.specialScreenView("Sign In")
+            AnalyticsService.specialScreenView("Sign In")
         }
         .onDisappear {
             dismiss()
