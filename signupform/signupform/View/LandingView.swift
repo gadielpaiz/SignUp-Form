@@ -38,7 +38,7 @@ struct LandingView: View {
                     }
                     .sheet(isPresented: $isItPressedToSignIn,
                            content: { SignInView() }
-                    )
+                    )                    
                 }
                 .buttonStyle(GradientButtonStyle(color: .blue, maxWidth: geometry.size.width, maxHeight: geometry.size.width * 0.1))
                 .padding(.horizontal, Constants.mainHorizontalPadding)
