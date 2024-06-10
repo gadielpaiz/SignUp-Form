@@ -15,7 +15,7 @@ struct SocialMediaAccess: View {
                 Rectangle()
                     .rectangleToLineStyle()
                 
-                Text("Or continue with")
+                Text("social_media_text")
                     .annotationTextStyle()
                 
                 Rectangle()

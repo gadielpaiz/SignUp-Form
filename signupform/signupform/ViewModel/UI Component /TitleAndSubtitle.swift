@@ -25,5 +25,5 @@ struct TitleAndSubtitle: View {
 }
 
 #Preview {
-    TitleAndSubtitle(title: "This is long, very long text for multiline testing.", subtitle: "This is long, very long text for multiline testing.")
+    TitleAndSubtitle(title: "long_text_placeholder", subtitle: "long_text_placeholder")
 }

@@ -137,7 +137,7 @@
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Inscríbete"
+            "value" : "Registrarse"
           }
         }
       }
@@ -309,7 +309,7 @@
         }
       }
     },
-    "email_error_requiered" : {
+    "email_error_required" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -327,11 +327,12 @@
       }
     },
     "Forgot Password" : {
+      "extractionState" : "stale",
       "localizations" : {
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Has olvidado tu contraseña"
+            "value" : "Olvidadó contraseña"
           }
         }
       }
@@ -348,7 +349,7 @@
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Olvidado contraseña"
+            "value" : "Olvidó contraseña"
           }
         }
       }
@@ -361,6 +362,12 @@
             "state" : "translated",
             "value" : "All fields must be filled out."
           }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Todos los campos deben ser completados."
+          }
         }
       }
     },
@@ -372,6 +379,12 @@
             "state" : "translated",
             "value" : "Don't worry! Please enter the email address linked to your account."
           }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¡No te preocupes! Por favor, introduzca la dirección de correo electrónico vinculada a su cuenta."
+          }
         }
       }
     },
@@ -382,6 +395,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Forgot password"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Olvidó contraseña"
           }
         }
       }
@@ -415,18 +434,24 @@
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Solo nombre y primer apellido"
+            "value" : "Solo nombre y primer apellido."
           }
         }
       }
     },
-    "full_name_error_requierd" : {
+    "full_name_error_required" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "The \\\"Full name\\\" field is required."
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "El \\\"Nombre Completo\\\" es obligatorio."
           }
         }
       }
@@ -466,10 +491,45 @@
       }
     },
     "Header" : {
-      "extractionState" : "manual"
+      "extractionState" : "manual",
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Encabezado"
+          }
+        }
+      }
+    },
+    "Hello, world!" : {
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hola, mundo!"
+          }
+        }
+      }
+    },
+    "Hello, World!" : {
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hola, mundo!"
+          }
+        }
+      }
     },
     "invisible text" : {
-
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Texto Invisible"
+          }
+        }
+      }
     },
     "landing_subtitle" : {
       "extractionState" : "manual",
@@ -478,6 +538,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "In order to continue using this app, please either log in or sign up."
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Para continuar usando esta aplicación, ingrese o regístrese."
           }
         }
       }
@@ -490,26 +556,90 @@
             "state" : "translated",
             "value" : "Welcome"
           }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bienvenido"
+          }
         }
       }
     },
     "Left Bottom" : {
-      "extractionState" : "manual"
+      "extractionState" : "manual",
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Abajo a la izquierda"
+          }
+        }
+      }
+    },
+    "Left Side Bottom" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Parte inferior izquierda"
+          }
+        }
+      }
     },
     "Left Side Top" : {
-      "extractionState" : "manual"
-    },
-    "Left Site Bottom" : {
-      "extractionState" : "manual"
+      "extractionState" : "manual",
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Parte superior izquierda"
+          }
+        }
+      }
     },
     "Left Up" : {
-      "extractionState" : "manual"
+      "extractionState" : "manual",
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Arriba a la izquierda"
+          }
+        }
+      }
+    },
+    "Loading" : {
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cargado"
+          }
+        }
+      }
     },
     "Loading..." : {
-      "extractionState" : "manual"
+      "extractionState" : "manual",
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cargado..."
+          }
+        }
+      }
     },
     "Log" : {
-      "extractionState" : "manual"
+      "extractionState" : "manual",
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vitácora"
+          }
+        }
+      }
     },
     "Logout" : {
       "extractionState" : "manual",
@@ -518,6 +648,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Log out"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Salir"
           }
         }
       }
@@ -530,6 +666,12 @@
             "state" : "translated",
             "value" : "Log out"
           }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Salir"
+          }
         }
       }
     },
@@ -540,6 +682,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "This is long, very long text for multiline testing."
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Este es un texto muy largo para pruebas de varias líneas."
           }
         }
       }
@@ -552,6 +700,12 @@
             "state" : "translated",
             "value" : "Resetting password.."
           }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "restablecer contraseña..."
+          }
         }
       }
     },
@@ -562,6 +716,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Accessing..."
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Accediendo..."
           }
         }
       }
@@ -574,23 +734,69 @@
             "state" : "translated",
             "value" : "Creating account..."
           }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Creando cuenta..."
+          }
         }
       }
     },
     "More" : {
-      "extractionState" : "manual"
+      "extractionState" : "manual",
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Más"
+          }
+        }
+      }
     },
     "Name" : {
-      "extractionState" : "manual"
+      "extractionState" : "manual",
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nombre"
+          }
+        }
+      }
     },
     "notes" : {
-      "extractionState" : "manual"
+      "extractionState" : "manual",
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "notas"
+          }
+        }
+      }
     },
     "Notes" : {
-      "extractionState" : "manual"
+      "extractionState" : "manual",
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Notas"
+          }
+        }
+      }
     },
     "Or continue with" : {
-
+      "extractionState" : "stale",
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "O continua con"
+          }
+        }
+      }
     },
     "password" : {
       "extractionState" : "manual",
@@ -600,16 +806,28 @@
             "state" : "translated",
             "value" : "Password"
           }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Contraseña"
+          }
         }
       }
     },
-    "password_error_policies " : {
+    "password_error_policies" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "8 characters, letters, and numbers."
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "8 caracteres, letras y números."
           }
         }
       }
@@ -622,6 +840,12 @@
             "state" : "translated",
             "value" : "The \\\"Password\\\" field is required."
           }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "El campo \\\"Contraseña\\\" es obligatorio."
+          }
         }
       }
     },
@@ -632,6 +856,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Enter your email"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Introduce tu correo electrónico"
           }
         }
       }
@@ -644,6 +874,12 @@
             "state" : "translated",
             "value" : "Enter your full name "
           }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Introduce tu nombre completo"
+          }
         }
       }
     },
@@ -655,11 +891,14 @@
             "state" : "translated",
             "value" : "Enter your password"
           }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Introduce tu contraseña"
+          }
         }
       }
-    },
-    "Remember me" : {
-
     },
     "remember_me" : {
       "extractionState" : "manual",
@@ -669,20 +908,56 @@
             "state" : "translated",
             "value" : "Remember me"
           }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Recuerdarme"
+          }
         }
       }
     },
     "Right Bottom" : {
-      "extractionState" : "manual"
+      "extractionState" : "manual",
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Abajo a la derecha"
+          }
+        }
+      }
     },
     "Right Up" : {
-      "extractionState" : "manual"
+      "extractionState" : "manual",
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Arriba a la derecha"
+          }
+        }
+      }
     },
     "Sign In" : {
-
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Iniciar sesión"
+          }
+        }
+      }
     },
     "Sign Up" : {
-
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Registrarse"
+          }
+        }
+      }
     },
     "sign_in_error_title" : {
       "extractionState" : "manual",
@@ -691,6 +966,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Sign in error"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Error al iniciar sesión"
           }
         }
       }
@@ -703,16 +984,28 @@
             "state" : "translated",
             "value" : "All fields must be filled out."
           }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Todos los campos deben ser completados."
+          }
         }
       }
     },
-    "sign_in_subtittle" : {
+    "sign_in_subtitle" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "We are happy to see you again"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Estamos felices de verte de nuevo"
           }
         }
       }
@@ -725,6 +1018,12 @@
             "state" : "translated",
             "value" : "Sign in "
           }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Iniciar sesión"
+          }
         }
       }
     },
@@ -735,6 +1034,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Sign up error"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "error de registro"
           }
         }
       }
@@ -747,6 +1052,12 @@
             "state" : "translated",
             "value" : "Get Started!"
           }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¡Empezar!"
+          }
         }
       }
     },
@@ -757,6 +1068,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Sign Up"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Registrarse"
           }
         }
       }
@@ -769,23 +1086,69 @@
             "state" : "translated",
             "value" : "Or continue with"
           }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "O continua con"
+          }
         }
       }
     },
     "Type" : {
-      "extractionState" : "manual"
+      "extractionState" : "manual",
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tipo"
+          }
+        }
+      }
     },
     "Unknown" : {
-      "extractionState" : "manual"
+      "extractionState" : "manual",
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Desconocido"
+          }
+        }
+      }
     },
     "Updated" : {
-      "extractionState" : "manual"
+      "extractionState" : "manual",
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Actualizado"
+          }
+        }
+      }
     },
     "Updated at:" : {
-      "extractionState" : "manual"
+      "extractionState" : "manual",
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Actualizado en:"
+          }
+        }
+      }
     },
     "Updated:" : {
-      "extractionState" : "manual"
+      "extractionState" : "manual",
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Actualizado:"
+          }
+        }
+      }
     }
   },
   "version" : "1.0"

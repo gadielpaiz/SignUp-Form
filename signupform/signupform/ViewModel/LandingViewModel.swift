@@ -14,12 +14,17 @@ import SwiftUI
 
 @Observable
 final class LandingViewModel {
+    private let coordinator: LandingCoordinator
     private let authRepository = AuthRepository()
     private var cancellables = Set<AnyCancellable>()
     private var user: UserModel?
     
+    init(_ coordinator: LandingCoordinator) {
+        self.coordinator = coordinator
+    }
+    
     var isErrorToast = false
-    var forgetSheet = false
+    var forgotSheet = false
     var modalSheet = false
     var signInSheet = false
     var signUpSheet = false
@@ -29,7 +34,7 @@ final class LandingViewModel {
     var toastErrorMessage = ""
     
     private func closeAllSheets() {
-        forgetSheet = false
+        forgotSheet = false
         modalSheet = false
         signInSheet = false
         signUpSheet = false
@@ -80,7 +85,7 @@ final class LandingViewModel {
         do {
             try DataService.shared.deleteModel()
             try UserRepository().createUser(user)
-
+            coordinator.appCoordinator.navigate(to: .home)
         } catch {
             CrashlyticsService.logError(error)
             showError(title: "Creating user", message: "Can't create a new user.")
@@ -93,13 +98,13 @@ final class LandingViewModel {
     
     func previousLogin() {
         if authRepository.currentLogin() {
-            
+            coordinator.appCoordinator.navigate(to: .home)
         }
     }
     
     func showForgotView() {
         closeAllSheets()
-        forgetSheet.toggle()
+        forgotSheet.toggle()
     }
 
     func showSignInView() {

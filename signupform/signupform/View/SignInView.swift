@@ -9,10 +9,14 @@ import SwiftUI
 
 struct SignInView: View {
     @FocusState private var focusedField: SignInViewModel.Fields?
+    @Bindable private var viewModel: SignInViewModel
     @Environment(\.dismiss) private var dismiss
     private let constants = Constants.shared
     @State private var isSecure = true
     
+    init(_ viewModel: SignInViewModel) {
+        self.viewModel = viewModel
+    }
     var body: some View {
         GeometryReader { geometry in
             VStack(spacing: 0) {
@@ -24,80 +28,96 @@ struct SignInView: View {
                     
                     VStack(spacing: Constants.paddingBetweenSections) {
                         TitleAndSubtitle(
-                            title: "Sign In",
-                            subtitle: "We happy to see you again.",
+                            title: "sign_in_title",
+                            subtitle: "sign_in_subtitle",
                             maxWidth: constants.scrnPercForTitle(geometry)
                         )
-                        .padding(.top, 45)
+                        .padding(.top, 50)
                         
                         ScrollView(.vertical) {
                             VStack(spacing: Constants.paddingBetweenSections) {
                                 VStack(spacing: 14) {
                                     ValidatingField(
-                                        "Enter your email",
-                                        text: .constant(""),
+                                        "placeholder_email",
+                                        text: $viewModel.email ,
                                         gradientColor: (.blue, .blue),
                                         needsSecurity: false,
                                         maxWidth: geometry.size.width,
                                         maxHeight: 60
                                     )
                                     .focused($focusedField, equals: .email)
+                                    .keyboardType(.emailAddress)
+                                    .textContentType(.emailAddress)
+                                    .submitLabel(.next)
                                     
-                                    ValidatingMessage(
-                                        ""
-                                    )
+                                    ValidatingMessage(viewModel.errorMessage["email"])
                                     
                                     ZStack {
                                         ValidatingField(
-                                            "Enter your password",
-                                            text: .constant(""),
+                                            "placeholder_password",
+                                            text: $viewModel.password,
                                             gradientColor: (.blue, .blue),
                                             needsSecurity: isSecure,
                                             maxWidth: geometry.size.width,
                                             maxHeight: 60
                                         )
+                                        .focused($focusedField, equals: .password)
+                                        .textContentType(.password)
+                                        .submitLabel(.done)
                                         
-//                                        Button(action: { isSecure.toggle() }) {
-//                                            if !signUpViewModel.password.isEmpty {
-//                                                Image(systemName: isSecure ? "eye.fill" : "eye.slash.fill")
-//                                                    .resizable()
-//                                                    .frame(maxWidth: isSecure ? 30 : 32, maxHeight: isSecure ? 20 : 23)
-//                                            } else {
-//                                                Image(systemName: "")
-//                                            }
-//                                        }
-//                                        .padding(.top)
-//                                        .padding(.leading, 290)
-//                                    }
-//                                    
-//                                    ValidatingMessage(
-//                                        signUpViewModel.validationMessage["password"]
-//                                    )
-//                                    
-//                                    HStack(spacing: 0) {
-//                                        Button("Remember me") {
-//                                            
-//                                        }
-//                                        Spacer()
-//                                        
-//                                        Button("Forgot Password") {
-//                                            
-//                                        }
-//                                        .buttonStyle(TextButtonStyle())
+                                        Button(action: { isSecure.toggle() }) {
+                                            if !viewModel.password.isEmpty {
+                                                Image(systemName: isSecure ? "eye.fill" : "eye.slash.fill")
+                                                    .resizable()
+                                                    .frame(maxWidth: isSecure ? 30 : 32, maxHeight: isSecure ? 20 : 23)
+                                            } else {
+                                                Image(systemName: "")
+                                            }
+                                        }
+                                        .padding(.top)
+                                        .padding(.leading, 290)
                                     }
-                                    ValidatingMessage("")
+                                    
+                                    ValidatingMessage(
+                                        viewModel.errorMessage["password"]
+                                    )
+                                    
+                                    HStack(spacing: 0) {
+                                        Toggle(isOn: $viewModel.rememberMe,
+                                               label: {
+                                            Text("remember_me")
+                                        })
+                                            .toggleStyle(CheckBoxToggleStyle())
+                                        
+                                        Spacer()
+                                        
+                                        Button("btn_forgot_password",
+                                               action: {
+                                            viewModel.showForgotView()
+                                        } )
+                                        .buttonStyle(TextButtonStyle())
+                                    }
                                     
                                     ValidatingButton(
-                                        {},
+                                        viewModel.validateSignInForm,
                                         colorButton: .blue,
                                         maxWidth: geometry.size.width,
                                         maxHeight: 100,
-                                        buttonName: "Access"
+                                        buttonName: "btn_sign_in_access"
                                     )
                                     .padding(.top, 5)
                                     
-                                    HaveAccount(haveAccount: false,tapButton: {})
+                                    HaveAccount(haveAccount: false,tapButton: viewModel.showSignUpView)
                                         .padding(.top, 10)
+
+                                }
+                                .onSubmit {
+                                    switch focusedField {
+                                    case .email:
+                                        focusedField = .password
+                                    default:
+                                        break
+                                    }
                                 }
                             }
                         }
@@ -125,5 +145,6 @@ struct SignInView: View {
 }
 
 #Preview {
-    SignInView()
+    SignInView(SignInViewModel( LandingViewModel( LandingCoordinator( AppCoordinator() ) ) ))
+        .environment(\.locale, Locale(identifier: "es"))
 }

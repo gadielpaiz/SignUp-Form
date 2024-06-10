@@ -14,7 +14,7 @@ final class AnalyticsService {
         Analytics.logEvent(event, parameters: parameters)
     }
     
-    static func currentScreenView(_ screen: String) {
+    static func currentScreenView(_ screen: AppViews) {
         logEvent(AnalyticsEventScreenView, parameters:[AnalyticsParameterScreenName : screen])
     }
     

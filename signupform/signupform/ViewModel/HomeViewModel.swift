@@ -8,11 +8,13 @@
 import Foundation
 import Observation
 
+@Observable
 final class HomeViewModel {
-    
+    private let coordinator: HomeCoordinator
     private var currentUser: UserModel?
     
-    init() {
+    init(_ coordinator: HomeCoordinator) {
+        self.coordinator = coordinator
         self.currentUser = UserRepository().getCurrentUser()
     }
     
@@ -22,7 +24,7 @@ final class HomeViewModel {
                 switch completion {
                 case .finished:
                     AnalyticsService.logOut()
-                    
+                    self.coordinator.appCoordinator.navigate(to: .landing)
                 case .failure(let error):
                     print("Error: \(error)")
                 }

@@ -31,7 +31,6 @@ final class ForgotViewModel {
         do {
            try validate(email: email, with: validator)
             
-            
             landingViewModel.forgotPassword(email)
         } catch {
             CrashlyticsService.logError(error)
