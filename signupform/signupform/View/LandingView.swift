@@ -6,19 +6,23 @@
 //
 
 import SwiftUI
+import TipKit
 
 struct LandingView: View {
-    @State private var isItPressedToSignUp = false
-    @State private var isItPressedToSignIn = false
+    @Bindable private var viewModel: LandingViewModel
     private let constants = Constants.shared
+    
+    init(_ viewModel: LandingViewModel) {
+        self.viewModel = viewModel
+    }
     
     var body: some View {
         GeometryReader { geometry in
             VStack(spacing: 0) {
                 
                 TitleAndSubtitle(
-                    title: "Landing View",
-                    subtitle: "Lading View sub",
+                    title: "landing_title",
+                    subtitle: "landing_subtitle",
                     maxWidth: constants.scrnPercForTitle(geometry)
                 )
                 .padding(.top, 30)
@@ -26,19 +30,13 @@ struct LandingView: View {
                 Spacer()
                 
                 HStack(spacing: 30) {
-                    Button("Sign Up") {
-                        isItPressedToSignUp = true
+                    Button("btn_sign_up") {
+                        viewModel.showSignUpView()
                     }
-                    .sheet(isPresented: $isItPressedToSignUp,
-                           content: { SignUpView() }
-                    )
                     
-                    Button("Sign In") {
-                        isItPressedToSignIn = true
+                    Button("btn_sign_in") {
+                        viewModel.showSignInView()
                     }
-                    .sheet(isPresented: $isItPressedToSignIn,
-                           content: { SignInView() }
-                    )                    
                 }
                 .buttonStyle(GradientButtonStyle(color: .blue, maxWidth: geometry.size.width, maxHeight: geometry.size.width * 0.1))
                 .padding(.horizontal, Constants.mainHorizontalPadding)
@@ -49,13 +47,34 @@ struct LandingView: View {
                     .padding(.bottom, 37)
             }
         }
+        .sheet(isPresented: $viewModel.signInSheet) {
+            SignInView(SignInViewModel(viewModel))
+        }
+        .sheet(isPresented: $viewModel.signUpSheet) {
+            SignUpView(SignUpViewModel(viewModel))
+        }
+        .sheet(isPresented: $viewModel.forgotSheet) {
+            ForgotView(ForgotViewModel(viewModel))
+        }
+        .fullScreenCover(isPresented: $viewModel.modalSheet) {
+            ActivityIndicator(message: viewModel.activityIndicatorMessage)
+        }
         .background(BackgroundHome(iphoneScaleFirst: 0.98, iphoneScaleSecond: 0.92))
         .onAppear {
-            AnalitycsService.currentScreenView("Landing View")
+            AnalyticsService.currentScreenView(.landing)
+            viewModel.previousLogin()
         }
     }
 }
 
 #Preview {
-    LandingView()
+    LandingView(LandingViewModel(LandingCoordinator(AppCoordinator())))
+        .environment(\.locale, Locale(identifier: "es"))
+        .task {
+            try? Tips.resetDatastore()
+            try? Tips.configure([
+                .displayFrequency(.immediate),
+                .datastoreLocation(.applicationDefault)
+            ])
+        }
 }

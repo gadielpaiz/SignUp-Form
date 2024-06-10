@@ -8,7 +8,7 @@
 import Foundation
 import FirebaseAnalytics
 
-enum validationError: Error {
+enum ValidationError: Error {
     case fullNameIsNotValid, fullNameIsRequiere
     case emailIsNotValid, emailIsRequiere
     case passwordPolicies, passwordIsRequiere
@@ -21,9 +21,9 @@ final class Validations: Error {
         return predicate.evaluate(with: string)
     }
     // Generalized validation method to handle empty string validation and regex matching
-    private func validate(_ value: String, with regex: String, emptyError: validationError, invalidError: validationError)throws -> Bool {
+    private func validate(_ value: String, with regex: String, emptyError: ValidationError, invalidError: ValidationError)throws -> Bool {
         guard !value.isEmpty else {
-            AnalitycsService.logEvent(
+            AnalyticsService.logEvent(
                 "Validations",
                 parameters: [AnalyticsParameterValue : emptyError]
             )
@@ -31,7 +31,7 @@ final class Validations: Error {
         }
         
         guard matches(value, regex: regex) else {
-            AnalitycsService.logEvent(
+            AnalyticsService.logEvent(
                 "Validations",
                 parameters: [AnalyticsParameterValue : invalidError]
             )
@@ -41,7 +41,7 @@ final class Validations: Error {
         return true
     }
     
-    func isValidFullName(_ fullName: String)throws -> Bool {
+    func isValidFullname(_ fullName: String)throws -> Bool {
         let nameRegex = "^[A-Za-z]+(?:[\\'\\,\\.\\-][A-Za-z]+)*\\s[A-Za-z]+(?:[\\'\\,\\.\\-][A-Za-z]+)*$"
         return try validate(fullName, with: nameRegex, emptyError: .fullNameIsRequiere, invalidError: .fullNameIsNotValid)
     }

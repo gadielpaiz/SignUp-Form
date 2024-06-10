@@ -19,11 +19,11 @@ struct GradientBorderStyle: TextFieldStyle {
             .font(.system(.headline, design: .rounded, weight: .bold))
             .frame(maxWidth: maxWidth, maxHeight: maxHeight)
             .background(
-                LinearGradient(gradient: Gradient(colors: [color1.opacity(0.3), color2.opacity(0.2)]), startPoint: .leading, endPoint: .trailing)
+                LinearGradient(gradient: Gradient(colors: [color1.opacity(0.7), color2.opacity(0.7)]), startPoint: .leading, endPoint: .trailing)
             )
             .overlay(
                 RoundedRectangle(cornerRadius:  5)
-                    .stroke(.black, lineWidth: 2)
+                    .stroke(.black.gradient.opacity(0.7), lineWidth: 2)
             )
     }
 }

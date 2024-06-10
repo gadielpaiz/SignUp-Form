@@ -20,7 +20,7 @@ struct ValidatingMessage: View {
     
     var body: some View {
         if let message = message {
-            Text(message)
+            Text(LocalizedStringKey(message))
                 .foregroundStyle(isError ? .green : .red)
                 .font(isValidationText ? .headline : .callout)
                 .offset(y: 8)
@@ -35,5 +35,5 @@ struct ValidatingMessage: View {
 }
 
 #Preview {
-    ValidatingMessage("Test text", isError: false, isValidationText: false)
+    ValidatingMessage("btn_sign_in_access", isError: false, isValidationText: false)
 }

@@ -23,12 +23,12 @@ struct ValidatingButton: View {
     }
 
     var body: some View {
-        Button(buttonName, action: action)
+        Button(LocalizedStringKey(buttonName), action: action)
             .buttonStyle(GradientButtonStyle(color: colorButton, maxWidth: maxWidth, maxHeight: maxHeight))
         .padding(.vertical, 10)
     }
 }
 
 #Preview {
-    ValidatingButton({}, colorButton: .blue, maxWidth: 100, maxHeight: 50, buttonName: "Create Account")
+    ValidatingButton({}, colorButton: .blue, maxWidth: .infinity, maxHeight: 50, buttonName: "btn_sign_up_create_account")
 }

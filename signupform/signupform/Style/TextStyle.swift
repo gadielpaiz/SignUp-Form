@@ -13,7 +13,7 @@ struct AnnotationTextStyle: ViewModifier {
             .foregroundStyle(.blue)
             .font( .system(.subheadline, weight: .black) )
             .kerning(1)
-            .frame(width: 130)
+            .frame(width: 145)
     }
 }
 
@@ -34,7 +34,7 @@ struct SubtitleTextStyle: ViewModifier {
             .foregroundStyle(.blue)
             .font( .system(.callout, weight: .heavy ) )
             .multilineTextAlignment(.center)
-            .lineLimit(2)
+            .lineLimit(3)
             .kerning(1)
             .frame(maxWidth: maxWidth)
     }

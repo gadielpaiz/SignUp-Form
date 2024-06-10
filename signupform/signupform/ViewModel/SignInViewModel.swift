@@ -1,15 +1,14 @@
 //
-//  SignUpViewModel.swift
+//  SignInViewModel.swift
 //  signupform
 //
-//  Created by Gadiel Paiz on 4/17/24.
+//  Created by Gadiel Paiz on 6/9/24.
 //
 
-import SwiftUI
-import Combine
+import Observation
 
 @Observable
-final class SignUpViewModel  {
+final class SignInViewModel {
     private let landingViewModel: LandingViewModel
     
     init(_ landingViewModel: LandingViewModel) {
@@ -17,37 +16,39 @@ final class SignUpViewModel  {
     }
     
     enum Fields {
-        case fullname
         case email
         case password
     }
     
-    var fullname = ""
+    var rememberMe = true
     var email = ""
     var password = ""
     // Use dictionary to manage error message
     var errorMessage: [String : String] = [:]
     
-    func showSignInView() {
-        landingViewModel.showSignInView()
+    
+    func showSignUpView() {
+        landingViewModel.showSignUpView()
     }
     
-    func validateSignUpForm() {
+    func showForgotView() {
+        landingViewModel.showForgotView()
+    }
+    
+    func validateSignInForm() {
         // Validator instance
         let validator = Validations()
         
-        // Trim whitespaces and newlines
-        fullname = fullname.trimmingCharacters(in: .whitespacesAndNewlines)
+        // Trim whitespace and new lines
         email = email.trimmingCharacters(in: .whitespacesAndNewlines)
         
-        // Attempt validation
+        // Attempt validations
         do {
-            try validate(fullname: fullname, with: validator)
             try validate(email: email, with: validator)
             try validate(password: password, with: validator)
             
-            // Create account if all validations pass
-            landingViewModel.createUser(fullname: fullname, email: email, password: password)
+            
+            landingViewModel.logIn(email: email, password: password)
         } catch {
             // Handle specific errors
             CrashlyticsService.logError(error)
@@ -55,42 +56,34 @@ final class SignUpViewModel  {
         }
     }
     
-    // Specific validation functions
-    private func validate(fullname: String, with validator: Validations) throws {
-        guard try validator.isValidFullname(fullname) else { throw ValidationError.fullNameIsNotValid }
-    }
-    
+    //Specific validation function
     private func validate(email: String, with validator: Validations) throws {
         guard try validator.isValidEmail(email) else { throw ValidationError.emailIsNotValid }
     }
     
     private func validate(password: String, with validator: Validations) throws {
-        guard try validator.isValidPassword(password) else { throw ValidationError.passwordPolicies }
+        guard try validator.isValidPassword(password) else { throw ValidationError.passwordPolicies}
     }
     
-    // Centralized error handling
+    //Centralized error hangling
     private func handleError(_ error: Error) {
         // Clear previous error message
         errorMessage.removeAll()
         
         if let authError = error as? ValidationError {
             switch authError {
-            case .fullNameIsRequiere:
-                errorMessage["fullname"] = "full_name_error_required"
-            case .fullNameIsNotValid:
-                errorMessage["fullname"] = "full_name_error_name"
-            case .emailIsRequiere:
-                errorMessage["email"] = "email_error_required"
             case .emailIsNotValid:
                 errorMessage["email"] = "email_error_not_valid"
-            case .passwordIsRequiere:
-                errorMessage["password"] = "password_error_required"
+            case .emailIsRequiere:
+                errorMessage["email"] = "email_error_required"
             case .passwordPolicies:
                 errorMessage["password"] = "password_error_policies"
+            case .passwordIsRequiere:
+                errorMessage["password"] = "password_error_required"
+            default:
+                print("Unknown Authentication error: \(error)")
             }
-        } else {
-            // Log unknown errors
-            print("Unknown Authentication error: \(error)")
         }
     }
+    
 }
