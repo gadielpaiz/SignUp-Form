@@ -43,7 +43,7 @@ struct SignInView: View {
                                         gradientColor: (.blue, .blue),
                                         needsSecurity: false,
                                         maxWidth: geometry.size.width,
-                                        maxHeight: 60
+                                        maxHeight: 70
                                     )
                                     .focused($focusedField, equals: .email)
                                     .keyboardType(.emailAddress)
@@ -59,7 +59,7 @@ struct SignInView: View {
                                             gradientColor: (.blue, .blue),
                                             needsSecurity: isSecure,
                                             maxWidth: geometry.size.width,
-                                            maxHeight: 60
+                                            maxHeight: 70
                                         )
                                         .focused($focusedField, equals: .password)
                                         .textContentType(.password)

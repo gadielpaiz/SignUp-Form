@@ -22,7 +22,7 @@ final class ForgotViewModel {
         landingViewModel.showSignInView()
     }
     
-    func validateForm() {
+    func validateForgotForm() {
         // Validator instances
         let validator = Validations()
         
